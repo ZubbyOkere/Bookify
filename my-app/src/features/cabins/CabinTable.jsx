@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { getCabins } from "../../services/apiCabing";
 import Spinner from "../../ui/Spinner";
 import CabinRow from "./CabinRow";
-// import ErrorFallback from "../../ui/ErrorFallback";
+import ErrorFallback from "../../ui/ErrorFallback";
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
 
@@ -30,16 +30,16 @@ const TableHeader = styled.header`
 
 function CabinTable() {
   const {
-    isLoading,
-    // isError,
+    isError,
     data: cabins,
+    isLoading,
   } = useQuery({
-    queryKey: ["cabin"],
+    queryKey: ["cabins"],
     queryFn: getCabins,
   });
 
   if (isLoading) return <Spinner />;
-  // if (isError) return <ErrorFallback />;
+  if (isError) return <ErrorFallback />;
   return (
     <Table>
       <TableHeader>
