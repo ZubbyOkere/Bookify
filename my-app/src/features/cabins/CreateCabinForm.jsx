@@ -3,13 +3,13 @@ import { toast } from "react-hot-toast";
 
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
-// import Button from "../../ui/Button";
+import Button from "../../ui/Button";
 // import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
 import FormRow from "../../ui/FormRow";
 
 import { useForm } from "react-hook-form";
-import { createCabin } from "../../services/apiCabins";
+import { createCabin } from "../../services/apiCabing";
 
 function CreateCabinForm() {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
@@ -28,11 +28,11 @@ function CreateCabinForm() {
   });
 
   function onSubmit(data) {
-    mutate({ ...data, image: data.image[0] });
+    mutate({ ...data });
   }
 
   function onError(errors) {
-    // console.log(errors);
+    console.log(errors);
   }
 
   return (
@@ -109,22 +109,22 @@ function CreateCabinForm() {
         />
       </FormRow>
 
-      <FormRow label="Cabin photo">
-        {/* <FileInput
+      {/* <FormRow label="Cabin photo">
+        <FileInput
           id="image"
           accept="image/*"
           {...register("image", {
             required: "This field is required",
           })}
-        /> */}
-      </FormRow>
+        />
+      </FormRow> */}
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        {/* <Button variation="secondary" type="reset">
+        <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button disabled={isCreating}>Add cabin</Button> */}
+        <Button disabled={isCreating}>Add cabin</Button>
       </FormRow>
     </Form>
   );
